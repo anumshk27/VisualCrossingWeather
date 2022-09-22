@@ -10,10 +10,20 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+    
+#error("If API doesn't work please un-comment below line to load data from local storage")
+        //UserDefaults.last_fetch = Global.getToday()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherViewController
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+
         return true
     }
 
